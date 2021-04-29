@@ -7,7 +7,7 @@ using UnityEngine.SceneManagement;
 
 public class GameController : MonoBehaviour
 {
-    //контроллер игры для переходов между сценами, охранения рекордов и контроля UI
+    //контроллер игры для переходов между сценами, сохранения рекордов и контроля UI
 
 
     [SerializeField] private Text _scoreLabel;

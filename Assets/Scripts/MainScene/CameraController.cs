@@ -4,7 +4,7 @@ using UnityEngine;
 
 public class CameraController : MonoBehaviour
 {
-    //скрипт для того, чтобы камера следовала
+    //скрипт для того, чтобы камера следовала за игроком
 
     [SerializeField] private GameObject _player;
     private Vector3 _offset;
