@@ -6,17 +6,16 @@ using UnityEngine.UI;
 
 public class SaveManager : MonoBehaviour
 {
+
+    //контроллер сохранений очков, бутылок и параметра звука
+
     [SerializeField] private Text _bestScorelabel;
     [SerializeField] private Text _countCoinLabel;
     [SerializeField] private GameController gameController;
 
-
-
-
     private void Start()
     {
         Load();
-
     }
 
 

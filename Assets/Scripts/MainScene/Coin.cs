@@ -4,14 +4,13 @@ using UnityEngine;
 
 public class Coin : MonoBehaviour
 {
+    //логика монетки
+
+
     private GameController _gameController;
     void Awake()
     {
         _gameController = FindObjectOfType<GameController>();
-    }
-    void Update()
-    {
-        
     }
 
     private void OnTriggerEnter(Collider other)

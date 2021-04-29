@@ -5,13 +5,15 @@ using DG.Tweening;
 
 public class RoadBlock : MonoBehaviour
 {
-   
+   //скрипт для блока дороги
+
+
     [SerializeField] private Transform _spanwPos1;
     [SerializeField] private Transform _spanwPos2;
     private mapManager _mapManager;
     private int _realSpawnPos;
 
-
+    private float _moveTo = 20f;
 
     private void Awake()
     {
@@ -19,15 +21,11 @@ public class RoadBlock : MonoBehaviour
         _mapManager = FindObjectOfType<mapManager>();
     }
 
-
-
-
     public void AddNewCar()
     {
         StartCoroutine(CicleOfCar());
         
     }
-
 
     private IEnumerator CicleOfCar()
     {
@@ -44,12 +42,12 @@ public class RoadBlock : MonoBehaviour
             if (_realSpawnPos == 0)
             {
                 newCar.transform.position = _spanwPos1.position;
-                newCar.move(-20f);
+                newCar.move(-_moveTo);
             }
             else
             {
                 newCar.transform.position = _spanwPos2.position;
-                newCar.move(20f);
+                newCar.move(_moveTo);
             }
         }
     }

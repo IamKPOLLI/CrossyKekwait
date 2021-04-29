@@ -4,7 +4,10 @@ using UnityEngine;
 
 public class mapManager : MonoBehaviour
 {
-    //object pools
+    //контроллер карты(для генерации блоков, контроля всех пулов объектов)
+
+
+    //префабы объектов и их пулы
     [SerializeField] private int _poolCount = 40;
     [SerializeField] private GreenBlock _greenPrefab;
     [SerializeField] private RoadBlock _roadPrefab;
@@ -44,6 +47,7 @@ public class mapManager : MonoBehaviour
         this._logPool.autoExpand = true;
         this._carPool.autoExpand = true;
         this._treePool = new ObjectPool<Tree>(this._treePrefab, 60, this.transform);
+        this._treePool.autoExpand = true;
         this._coinPool = new ObjectPool<Coin>(this._coinPrefab, 10, this.transform);
 
     }
@@ -52,10 +56,6 @@ public class mapManager : MonoBehaviour
         GenerateStartPartOfMap();
     }
 
-    void Update()
-    {
-
-    }
 
     public void CreateNewBlock()
     {

@@ -6,7 +6,7 @@ using UnityEngine.UI;
 
 public class MenuController : MonoBehaviour
 {
-
+    //контроллер стартовой сцены
 
     [SerializeField] private Text _bottles;
     [SerializeField] private Image _volumeOff;

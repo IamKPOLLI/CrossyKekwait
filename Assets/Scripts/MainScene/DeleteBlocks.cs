@@ -4,6 +4,9 @@ using UnityEngine;
 
 public class DeleteBlocks : MonoBehaviour
 {
+    //скрипт который возвращает все объекты в пул, если их уже не видно
+
+
     [SerializeField] private mapManager _mapManager;
     [SerializeField] private GameObject _player;
     private Vector3 _offset;

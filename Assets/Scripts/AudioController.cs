@@ -4,6 +4,9 @@ using UnityEngine;
 
 public class AudioController : MonoBehaviour
 {
+    //синглтон для управления звуками, чтобы воспроизводить их при переключении сцен
+
+
     public static AudioController Instance;
     private int _isMute;
 

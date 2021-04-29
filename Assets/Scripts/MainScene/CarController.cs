@@ -5,13 +5,16 @@ using DG.Tweening;
  
 public class CarController : MonoBehaviour 
 {
+    //контроллер машины
 
     private Tween _move;
+    private float _timeToDie = 15f;
+    private float _timeToMove = 17f;
 
     public void move(float to)
     {
         
-        _move = transform.DOMoveX(to, 17);
+        _move = transform.DOMoveX(to, _timeToMove);
         _move.Play();
         StartCoroutine(DeleteCar());
     }
@@ -24,7 +27,7 @@ public class CarController : MonoBehaviour
 
     private IEnumerator DeleteCar() 
     {
-        yield return new WaitForSeconds(15);    
+        yield return new WaitForSeconds(_timeToDie);    
         Stop();
     }
 

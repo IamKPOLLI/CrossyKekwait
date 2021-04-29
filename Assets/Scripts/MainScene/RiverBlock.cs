@@ -4,10 +4,15 @@ using UnityEngine;
 
 public class RiverBlock : MonoBehaviour
 {
+
+    // скрипт для блока реки
+
     [SerializeField] private Transform _spanwPos1;
     [SerializeField] private Transform _spanwPos2;
     private mapManager _mapManager;
     private int _realSpawnPos;
+
+    private float _moveTo = 20f;
 
 
 
@@ -16,9 +21,6 @@ public class RiverBlock : MonoBehaviour
         _realSpawnPos = Random.Range(0, 2);
         _mapManager = FindObjectOfType<mapManager>();
     }
-
-
-
 
     public void AddNewLog()
     {
@@ -42,12 +44,12 @@ public class RiverBlock : MonoBehaviour
             if (_realSpawnPos == 0)
             {
                 newLog.transform.position = _spanwPos1.position;
-                newLog.move(-20f);
+                newLog.move(-_moveTo);
             }
             else
             {
                 newLog.transform.position = _spanwPos2.position;
-                newLog.move(20f);
+                newLog.move(_moveTo);
             }
         }
     }

@@ -5,6 +5,7 @@ using UnityEngine;
 
 public class ObjectPool<T> where T: MonoBehaviour
 {
+    //шаблон для пула объектов
     [SerializeField] private T _prefab { get; }
     [SerializeField] private Transform _container { get; }
     public bool autoExpand { get; set; }

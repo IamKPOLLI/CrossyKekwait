@@ -4,6 +4,9 @@ using UnityEngine;
 
 public class MoveBorders : MonoBehaviour
 {
+
+    //скрипт для передвижения границ игры только по оси Х
+
     [SerializeField] private GameObject _player;
     [SerializeField] private GameController _gameController;
     private float _offset;

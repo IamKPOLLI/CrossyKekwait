@@ -5,6 +5,9 @@ using DG.Tweening;
 
 public class LogController : MonoBehaviour
 {
+    //контроллер для бревна
+
+
     private Tween _move;
 
     public void move(float to)

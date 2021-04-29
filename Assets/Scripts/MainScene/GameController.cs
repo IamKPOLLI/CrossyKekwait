@@ -7,6 +7,8 @@ using UnityEngine.SceneManagement;
 
 public class GameController : MonoBehaviour
 {
+    //контроллер игры для переходов между сценами, охранения рекордов и контроля UI
+
 
     [SerializeField] private Text _scoreLabel;
     [SerializeField] private Text _countOfCoins;
@@ -17,17 +19,7 @@ public class GameController : MonoBehaviour
     private int _currentScore = 0;
     public int coinCount = 0;
     public int bestResult;
-    // Start is called before the first frame update
-    void Start()
-    {
-        
-    }
 
-    // Update is called once per frame
-    void Update()
-    {
-        
-    }
 
     public void AddScore()
     {

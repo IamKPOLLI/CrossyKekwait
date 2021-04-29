@@ -6,20 +6,19 @@ using UnityEngine.UI;
 
 public class PlayerController : MonoBehaviour
 {
-
-    
-    private const float MAX_SWIPE_TIME = 0.5f;
-    private const float MIN_SWIPE_DISTANCE = 0.1f;
+    //контроллер игрока
 
     private bool _isOnLog = false;
-   
 
-    private static bool swipedRight = false;
-    private static bool swipedLeft = false;
-    private static bool swipedUp = false;
+    private const float _MAX_SWIPE_TIME = 0.5f;
+    private const float _MIN_SWIPE_DISTANCE = 0.1f;
 
-    Vector2 startPos;
-    float startTime;
+    private static bool _swipedRight = false;
+    private static bool _swipedLeft = false;
+    private static bool _swipedUp = false;
+
+    private Vector2 _startPos;
+    private float _startTime;
 
 
 
@@ -40,12 +39,12 @@ public class PlayerController : MonoBehaviour
 
     public void Update()
     {
-        swipedRight = false;
-        swipedLeft = false;
-        swipedUp = false;
+        _swipedRight = false;
+        _swipedLeft = false;
+        _swipedUp = false;
 
 
-        //ForComputerDebug
+        //код для отладки на компьютере
 
         if (Input.GetKey(KeyCode.UpArrow))
         {
@@ -83,25 +82,26 @@ public class PlayerController : MonoBehaviour
 
 
 
+        // код для управления с телефона свайпами
 
         if (Input.touches.Length > 0)
         {
             Touch t = Input.GetTouch(0);
             if (t.phase == TouchPhase.Began)
             {
-                startPos = new Vector2(t.position.x / (float)Screen.width, t.position.y / (float)Screen.width);
-                startTime = Time.time;
+                _startPos = new Vector2(t.position.x / (float)Screen.width, t.position.y / (float)Screen.width);
+                _startTime = Time.time;
             }
             if (t.phase == TouchPhase.Ended)
             {
-                if (Time.time - startTime > MAX_SWIPE_TIME) // press too long
+                if (Time.time - _startTime > _MAX_SWIPE_TIME) // press too long
                     return;
 
                 Vector2 endPos = new Vector2(t.position.x / (float)Screen.width, t.position.y / (float)Screen.width);
 
-                Vector2 swipe = new Vector2(endPos.x - startPos.x, endPos.y - startPos.y);
+                Vector2 swipe = new Vector2(endPos.x - _startPos.x, endPos.y - _startPos.y);
 
-                if (swipe.magnitude < MIN_SWIPE_DISTANCE)
+                if (swipe.magnitude < _MIN_SWIPE_DISTANCE)
                 {
                     return;
                 }
@@ -110,18 +110,18 @@ public class PlayerController : MonoBehaviour
                 {
                     if (swipe.x > 0)
                     {
-                        swipedRight = true;
+                        _swipedRight = true;
                     }
                     else
                     {
-                        swipedLeft = true;
+                        _swipedLeft = true;
                     }
                 }
                 else
                 {
                     if (swipe.y > 0)
                     {
-                        swipedUp = true;
+                        _swipedUp = true;
                     }
 
                 }
@@ -131,7 +131,7 @@ public class PlayerController : MonoBehaviour
 
 
 
-        if (swipedUp)
+        if (_swipedUp)
         {
             if (!_jump.IsPlaying())
             {
@@ -145,7 +145,7 @@ public class PlayerController : MonoBehaviour
             }
         }
 
-        if (swipedRight)
+        if (_swipedRight)
         {
             if (!_jump.IsPlaying())
             {
@@ -153,7 +153,7 @@ public class PlayerController : MonoBehaviour
             }
         }
 
-        if (swipedLeft)
+        if (_swipedLeft)
         {
             if (!_jump.IsPlaying())
             {
