@@ -5,7 +5,7 @@ using DG.Tweening;
 
 public class RoadBlock : MonoBehaviour
 {
-   // [SerializeField] private GameObject _car;
+   
     [SerializeField] private Transform _spanwPos1;
     [SerializeField] private Transform _spanwPos2;
     private mapManager _mapManager;
@@ -35,7 +35,7 @@ public class RoadBlock : MonoBehaviour
         while (true)
         {
 
-            var rand = Random.Range(0.5f, 4);
+            var rand = Random.Range(2.5f, 6);
             yield return new WaitForSeconds(rand);
 
             

@@ -18,6 +18,7 @@ public class Coin : MonoBehaviour
     {
         if (other.gameObject.CompareTag("Player"))
         {
+            AudioController.Instance.PlayBottle();
             this.gameObject.SetActive(false);
             _gameController.AddCoin();
 

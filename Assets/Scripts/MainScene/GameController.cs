@@ -54,11 +54,13 @@ public class GameController : MonoBehaviour
 
     public void RestartGame()
     {
+        AudioController.Instance.PlayButton();
         SceneManager.LoadScene("Main");   
     }
 
     public void LoadMenuScene()
     {
+        AudioController.Instance.PlayButton();
         SceneManager.LoadScene("Menu");
     }
 

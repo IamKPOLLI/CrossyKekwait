@@ -16,16 +16,30 @@ public class DeleteBlocks : MonoBehaviour
     {
         transform.position = _player.transform.position + _offset;
     }
+
+
+
     private void OnTriggerEnter(Collider other)
     {
-        if (other.gameObject.CompareTag("Block"))
+        if (other.gameObject.CompareTag("Block") || other.gameObject.CompareTag("RiverBlock"))
         {
             other.gameObject.SetActive(false);
             _mapManager.CreateNewBlock();
         }
-        if (other.gameObject.CompareTag("Car") || other.gameObject.CompareTag("Let") || other.gameObject.CompareTag("Coin"))
+        if ( other.gameObject.CompareTag("Coin") || other.gameObject.CompareTag("Let"))
         {
             other.gameObject.SetActive(false);
+        }
+
+        if (other.gameObject.CompareTag("Car"))
+        {
+            var h = other.GetComponent<CarController>();
+            h.Stop();
+        }
+        if (other.gameObject.CompareTag("Log"))
+        {
+            LogController h = other.GetComponent<LogController>();
+            h.Stop();
         }
 
 

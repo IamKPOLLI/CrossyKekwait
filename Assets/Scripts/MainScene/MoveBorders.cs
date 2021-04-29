@@ -5,6 +5,7 @@ using UnityEngine;
 public class MoveBorders : MonoBehaviour
 {
     [SerializeField] private GameObject _player;
+    [SerializeField] private GameController _gameController;
     private float _offset;
     void Start()
     {
@@ -15,4 +16,6 @@ public class MoveBorders : MonoBehaviour
     {
         transform.position = new Vector3(transform.position.x ,transform.position.y, _player.transform.position.z + _offset);
     }
+
+
 }

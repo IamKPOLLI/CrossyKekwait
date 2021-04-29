@@ -9,16 +9,26 @@ public class MenuController : MonoBehaviour
 
 
     [SerializeField] private Text _bottles;
+    [SerializeField] private Image _volumeOff;
 
 
 
     private void Start()
     {
         LoadBottles();
+        
     }
     public void StartPlay()
     {
+        AudioController.Instance.PlayButton();
         SceneManager.LoadScene("Main");
+    }
+
+    public void VolumeClick()
+    {
+        AudioController.Instance.PlayButton();
+        AudioController.Instance.ChangeVolumeMute();
+        ChangeVolumeImage();
     }
 
     private void LoadBottles()
@@ -33,5 +43,14 @@ public class MenuController : MonoBehaviour
             PlayerPrefs.Save();
         }
     }
+
+    public void ChangeVolumeImage()
+    {
+        _volumeOff.gameObject.SetActive(!_volumeOff.gameObject.activeSelf);
+    }
+
+
+
+
 
 }

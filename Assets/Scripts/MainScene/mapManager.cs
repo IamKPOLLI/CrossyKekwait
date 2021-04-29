@@ -10,6 +10,7 @@ public class mapManager : MonoBehaviour
     [SerializeField] private RoadBlock _roadPrefab;
     [SerializeField] private RiverBlock _riverPrefab;
     [SerializeField] private CarController _carPrefab;
+    [SerializeField] private LogController _logPrefab;
     [SerializeField] private Tree _treePrefab;
     [SerializeField] private Coin _coinPrefab;
 
@@ -19,10 +20,11 @@ public class mapManager : MonoBehaviour
     private ObjectPool<CarController> _carPool;
     private ObjectPool<Tree> _treePool;
     private ObjectPool<Coin> _coinPool;
+    private ObjectPool<LogController> _logPool;
 
 
     private Vector3 _currentLastBlockPosition;
-    private int _countOfStartBlocks = 20;
+    private int _countOfStartBlocks = 30;
 
     [SerializeField] private GameObject _borders;
 
@@ -38,7 +40,9 @@ public class mapManager : MonoBehaviour
         this._roadPool = new ObjectPool<RoadBlock>(this._roadPrefab, this._poolCount, this.transform);
         this._riverPool = new ObjectPool<RiverBlock>(this._riverPrefab, this._poolCount, this.transform);
         this._carPool = new ObjectPool<CarController>(this._carPrefab, 70, this.transform);
-        //this._carPool.autoExpand = true;
+        this._logPool = new ObjectPool<LogController>(this._logPrefab, 70, this.transform);
+        this._logPool.autoExpand = true;
+        this._carPool.autoExpand = true;
         this._treePool = new ObjectPool<Tree>(this._treePrefab, 60, this.transform);
         this._coinPool = new ObjectPool<Coin>(this._coinPrefab, 10, this.transform);
 
@@ -55,7 +59,7 @@ public class mapManager : MonoBehaviour
 
     public void CreateNewBlock()
     {
-        int value = Random.Range(0, 3);
+        int value = Random.Range(0, 5);
         _currentLastBlockPosition += new Vector3(0, 0, 1.6f);
         switch (value)
         {
@@ -72,7 +76,21 @@ public class mapManager : MonoBehaviour
                 MoveBorders();
                 break;
             case 2:
-                this._riverPool.GetFreeElenemt().transform.position = _currentLastBlockPosition;
+                var newRi = this._riverPool.GetFreeElenemt();
+                newRi.transform.position = _currentLastBlockPosition;
+                newRi.AddNewLog();
+                MoveBorders();
+                break;
+            case 3:
+                var newT2 = this._greenPool.GetFreeElenemt();
+                newT2.transform.position = _currentLastBlockPosition;
+                newT2.GenerateTrees();
+                MoveBorders();
+                break;
+            case 4:
+                var newR2 = this._roadPool.GetFreeElenemt();
+                newR2.transform.position = _currentLastBlockPosition;
+                newR2.AddNewCar();
                 MoveBorders();
                 break;
         }
@@ -83,7 +101,8 @@ public class mapManager : MonoBehaviour
     {
         for(int i = 0; i < _countOfStartBlocks; i++)
         {
-            int value = Random.Range(0, 3);
+            int value = Random.Range(0, 5);
+            if (i == 3) value = 0;
             switch (value)
             {
                 case 0:
@@ -102,7 +121,24 @@ public class mapManager : MonoBehaviour
                     _currentLastBlockPosition = new Vector3(0, 0, i * 1.6f);
                     break;
                 case 2:
-                    this._riverPool.GetFreeElenemt().transform.position = new Vector3(0, 0, i * 1.6f);
+                    var newRi = this._riverPool.GetFreeElenemt();
+                    newRi.transform.position = new Vector3(0, 0, i * 1.6f);
+                    newRi.AddNewLog();
+                    _currentLastBlockPosition = new Vector3(0, 0, i * 1.6f);
+                    break;
+                case 3:
+                    var newT2 = this._greenPool.GetFreeElenemt();
+                    newT2.transform.position = new Vector3(0, 0, i * 1.6f);
+                    if (i != 3)
+                    {
+                        newT2.GenerateTrees();
+                    }
+                    _currentLastBlockPosition = new Vector3(0, 0, i * 1.6f);
+                    break;
+                case 4:
+                    var newR2 = this._roadPool.GetFreeElenemt();
+                    newR2.transform.position = new Vector3(0, 0, i * 1.6f);
+                    newR2.AddNewCar();
                     _currentLastBlockPosition = new Vector3(0, 0, i * 1.6f);
                     break;
             }
@@ -117,6 +153,11 @@ public class mapManager : MonoBehaviour
     public CarController GetNewCar()
     {
        return  this._carPool.GetFreeElenemt();
+    }
+
+    public LogController GetNewLog()
+    {
+        return this._logPool.GetFreeElenemt();
     }
 
 

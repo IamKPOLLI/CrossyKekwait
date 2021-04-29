@@ -135,7 +135,7 @@ GameObject:
   - component: {fileID: 6789107}
   m_Layer: 0
   m_Name: RightBorder
-  m_TagString: Let
+  m_TagString: Borders
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -149,7 +149,7 @@ Transform:
   m_GameObject: {fileID: 6789105}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
   m_LocalPosition: {x: 36.5, y: 1, z: 10}
-  m_LocalScale: {x: 1, y: 1, z: 20}
+  m_LocalScale: {x: 0.1, y: 1, z: 60}
   m_Children: []
   m_Father: {fileID: 812219546}
   m_RootOrder: 1
@@ -265,6 +265,8 @@ MonoBehaviour:
   _riverPrefab: {fileID: -6624695347121729420, guid: 93c6f6f958303d749ad0e2747fda8319,
     type: 3}
   _carPrefab: {fileID: 3237273853065574188, guid: d176a0a1c2e93994db2a7df895d9fe13,
+    type: 3}
+  _logPrefab: {fileID: 6928244278048564182, guid: db3b4d115ff45c54b9bbe6404b80cfda,
     type: 3}
   _treePrefab: {fileID: -6681785612092017755, guid: d29ddf29433394e45bb54d16d06d3721,
     type: 3}
@@ -621,7 +623,7 @@ GameObject:
   - component: {fileID: 812219547}
   m_Layer: 0
   m_Name: Borders
-  m_TagString: Untagged
+  m_TagString: Borders
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -655,6 +657,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _player: {fileID: 2059594486}
+  _gameController: {fileID: 1992847120}
 --- !u!1 &817541234
 GameObject:
   m_ObjectHideFlags: 0
@@ -669,7 +672,7 @@ GameObject:
   - component: {fileID: 817541236}
   m_Layer: 0
   m_Name: LeftBorder
-  m_TagString: Let
+  m_TagString: Borders
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -683,7 +686,7 @@ Transform:
   m_GameObject: {fileID: 817541234}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
   m_LocalPosition: {x: 19, y: 1, z: 10}
-  m_LocalScale: {x: 1, y: 1, z: 20}
+  m_LocalScale: {x: 0.1, y: 1, z: 60}
   m_Children: []
   m_Father: {fileID: 812219546}
   m_RootOrder: 0
@@ -891,13 +894,13 @@ Transform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 963194225}
-  m_LocalRotation: {x: 0.4460149, y: -0.22957525, z: 0.11950932, w: 0.85678667}
-  m_LocalPosition: {x: 7.7, y: 9, z: 0}
+  m_LocalRotation: {x: 0.41855076, y: -0.1547515, z: 0.06099886, w: 0.89283055}
+  m_LocalPosition: {x: 8, y: 16, z: -3}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 0}
   m_RootOrder: 3
-  m_LocalEulerAnglesHint: {x: 55, y: -30.000002, z: 0}
+  m_LocalEulerAnglesHint: {x: 50.020004, y: -20.524, z: -1.8390001}
 --- !u!114 &963194229
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1496,22 +1499,27 @@ PrefabInstance:
     - target: {fileID: 65449959130551738, guid: 7451ef01e53127446b9d7406220542f6,
         type: 3}
       propertyPath: m_Size.z
-      value: 1.6
+      value: 1.4
       objectReference: {fileID: 0}
     - target: {fileID: 65449959130551738, guid: 7451ef01e53127446b9d7406220542f6,
         type: 3}
       propertyPath: m_Size.y
-      value: 1
+      value: 1.1702003
       objectReference: {fileID: 0}
     - target: {fileID: 65449959130551738, guid: 7451ef01e53127446b9d7406220542f6,
         type: 3}
       propertyPath: m_Center.y
-      value: 0.5
+      value: 0.41489983
       objectReference: {fileID: 0}
     - target: {fileID: 65449959130551738, guid: 7451ef01e53127446b9d7406220542f6,
         type: 3}
       propertyPath: m_Size.x
-      value: 1.6
+      value: 1.4
+      objectReference: {fileID: 0}
+    - target: {fileID: 65449959130551738, guid: 7451ef01e53127446b9d7406220542f6,
+        type: 3}
+      propertyPath: m_IsTrigger
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 1890321002993416166, guid: 7451ef01e53127446b9d7406220542f6,
         type: 3}
@@ -1639,7 +1647,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1810427529}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 1.8, y: 0.53, z: -10}
+  m_LocalPosition: {x: 1.8, y: 0.53, z: -3.9}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 0}
@@ -1819,7 +1827,7 @@ Rigidbody:
   m_Mass: 1
   m_Drag: 0
   m_AngularDrag: 0.05
-  m_UseGravity: 1
+  m_UseGravity: 0
   m_IsKinematic: 0
   m_Interpolate: 0
   m_Constraints: 122
