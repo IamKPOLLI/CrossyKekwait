@@ -21,7 +21,7 @@ public class MenuController : MonoBehaviour
     public void StartPlay()
     {
         AudioController.Instance.PlayButton();
-        SceneManager.LoadScene("Main");
+        SceneManager.LoadScene("GamePlay");
     }
 
     public void VolumeClick()
